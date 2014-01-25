@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div class='container'>
+      <div id="picture">
+	<canvas id='src_pic'></canvas>
+      </div>
+      <div id="info">
+	<h3>Picture information</h3>
+	<div id="origin_size">Original size: (width, height) = (<span id="original_width"></span>px, <span id="original_height"></span>px)</div>
+	<div id="resize_size">Resized size: (width, height) = (<span id="resized_width"></span>, <span id="resized_height"></span>)</div>
+	<div id="ratio">Ratio: (original:resized) = (<span id="ratio_num"></span>:1)</div>
+	<h3>Mouse Trigger</h3>
+	<div id="move_position">Move position: (x, y) = (<span id="move_x">null</span>, <span id="move_y">null</span>)</div>
+	<div>
+	  <canvas id="tmp_color" style="border: 1px solid #999;" width="72" height="72"></canvas>
+	  <canvas id="clip_part" style="border: 1px solid #999;" width="72" height="72"></canvas>
+	</div>
+	<div id="click_color">
+	  Click save (Left) - (r, g, b) = (<span id="click_rgb_color">null, null, null</span>), hex code: <span id="click_hex_color">null</span>
+	</div>
+	<div id="move_color">
+	  Move change (Right) - (r, g, b) = (<span id="move_rgb_color">null, null, null</span>), hex code: <span id="move_hex_color">null</span>
+	</div>
+	<div>RGB distance: <span id="color_dis"></span></div>
+	<h3>Threshold filter <button id="new_threshold">New threshold</button> <button id="reset">Reset</button></h3>
+	<div>
+	  tolerance: <span id="tolerance">50</span><br />
+	  <input id="threshold_adjust" type="range" min="0", max="255" value="50" /> 
+	  
+	</div>
+
+	
+      </div>
+    </div>
+    <script src='./js/jquery-1.11.0.min.js'></script>
+    <script src='./js/script.js'></script>
+  </body>
+</html>
+

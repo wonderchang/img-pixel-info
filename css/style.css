@@ -1,0 +1,16 @@
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+#picture canvas {
+  float: left;
+  border: 1px solid #CCC;
+}
+#info {
+  float: left;
+  padding: 10px 30px;
+}
+#info div {
+  margin: 10px 0px;
+}
