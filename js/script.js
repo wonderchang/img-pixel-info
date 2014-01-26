@@ -1,14 +1,14 @@
 //View responsive
 $('#picture').css('width', window.innerWidth * 0.65 + 'px');
 $('#picture').css('height', window.innerHeight * 0.95 + 'px');
-$('#info').css('width', window.innerWidth * 0.25 + 'px');
+$('#info').css('width', window.innerWidth * 0.26 + 'px');
 $('#info').css('height', window.innerHeight * 0.95 + 'px');
 
 //Data
 var save_color = { r: 255, g: 255, b: 255, a: 255 };
-var color_box_width = window.innerWidth * 0.25 - 6;
+var color_box_width = window.innerWidth * 0.26;
 var color_box_height = 32;
-var tolerance = 50;
+var tolerance = 25;
 var filter_mode = 0;
 
 
@@ -25,11 +25,12 @@ document.getElementById('click_color').setAttribute('width', color_box_width);
 document.getElementById('click_color').setAttribute('height', color_box_height);
 document.getElementById('move_color').setAttribute('width', color_box_width);
 document.getElementById('move_color').setAttribute('height', color_box_height);
+document.getElementById('tolerance_adjust').style.width = color_box_width + 'px';
 
 //The source of picture
 //img.src = './img/color_wheel_730.png';
-img.src = './img/girl.jpg';
-//img.src = './img/color_wheel_730.png';
+//img.src = './img/girl.jpg';
+img.src = './img/mouse.jpg';
 
 //Load the picture and convert to canvas
 img.onload = function() {
@@ -89,6 +90,12 @@ document.querySelector('#mode_toggle').addEventListener('click', function(evt) {
     filter_mode = 1;
     $('#mode_toggle').html('Off');
   }
+});
+
+document.querySelector('#reset').addEventListener('click', function(evt) {
+  init_image(src_pic_ctx, img);
+  filter_mode = 0;
+  $('#mode_toggle').html('On');
 });
 
 function init_image(context, img_src) {
