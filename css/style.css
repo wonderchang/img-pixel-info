@@ -2,15 +2,33 @@
   margin: 0;
   padding: 0;
 }
+#picture {
+  float: left;
+  border: 1px solid #CCC;
+  overflow: scroll;
+}
 
 #picture canvas {
-  float: left;
   border: 1px solid #CCC;
 }
 #info {
   float: left;
-  padding: 10px 30px;
+  padding: 0px 30px;
+}
+#info h3 {
+  border: 1px solid #999;
+  padding: 3px 5px;
+  border-radius: 3px;
+  background-color: #CCC;
 }
 #info div {
   margin: 10px 0px;
+  overflow: scroll;
+}
+
+#click_color {
+  border: 1px solid #999;
+}
+#move_color {
+  border: 1px solid #999;
 }
