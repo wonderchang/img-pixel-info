@@ -69,7 +69,9 @@ src_pic.addEventListener('click', function(evt) {
 document.querySelector('#tolerance_adjust').addEventListener('change', function(evt) {
   $("#tolerance").html(evt.target.value);
   tolerance = parseInt(evt.target.value);
-  threshold(tolerance);
+  if(filter_mode) {
+    threshold(tolerance);
+  }
 });
 
 document.querySelector('#mode_toggle').addEventListener('click', function(evt) {
