@@ -26,14 +26,18 @@
       <h3>Distance between two color</h3>
       <div>RGB distance: <span id="color_dis">0</span></div>
 
-      <h3>Image process with flood fill</h3>
-      <div>Click and make a region flood fill in black</div>
-
-      <h3>Threshold filter<button style="float: right;" id="mode_toggle">On</button></h3>
-      <div>tolerance: <span id="tolerance">25</span></div>
+      <h3>Tolerance adjusting</h3>
+      <div>Tolerance: <span id="tolerance">25</span></div>
       <div><input id="tolerance_adjust" type="range" min="0", max="100" value="25" /></div>
 
+      <h3>Flood fill drawing<button style="float: right;" id="flood_fill">On</button></h3>
+      <div>Click and make a region flood fill in black. The tolerance value will determine the tolerance of the nearby color.</div>
+
+      <h3>Threshold filter<button style="float: right;" id="filter">On</button></h3>
+      <div>Accroding your saved color by clicking and the tolerance value by adjusting, the threshold of the filter is (rgb - tolerance, rgb + tolerance).</div>
+
       <h3>Reset image<button id="reset" style="float: right;">Reset</button></h3>
+      <div>Reset the image to the original.</div>
 
     </div>
     <script src='./js/jquery-1.11.0.min.js'></script>
