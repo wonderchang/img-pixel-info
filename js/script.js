@@ -1,15 +1,16 @@
 //View responsive
 $('#picture').css('width', window.innerWidth * 0.65 + 'px');
-$('#picture').css('height', window.innerHeight * 0.95 + 'px');
+$('#picture').css('height', window.innerHeight * 0.98 + 'px');
 $('#info').css('width', window.innerWidth * 0.26 + 'px');
-$('#info').css('height', window.innerHeight * 0.95 + 'px');
+$('#info').css('height', window.innerHeight * 0.98 + 'px');
 
 //Data
 var save_color = { r: 255, g: 255, b: 255, a: 255 };
 var color_box_width = window.innerWidth * 0.26;
-var color_box_height = 32;
+var color_box_height = 25;
 var tolerance = 25;
 var filter_mode = 0;
+var flood_mode = 0;
 
 
 //DOM element
@@ -68,7 +69,9 @@ src_pic.addEventListener('click', function(evt) {
   click_color_ctx.fillStyle = color_code;
   click_color_ctx.fillRect(0, 0, color_box_width, color_box_height);
   calculate_distance(save_color, save_color);
-  floodfill(evt.offsetX, evt.offsetY, {r: 0, g: 0, b: 0, a: 255}, src_pic_ctx, img.width, img.height, tolerance);
+  if(flood_mode) {
+    floodfill(evt.offsetX, evt.offsetY, {r: 0, g: 0, b: 0, a: 255}, src_pic_ctx, img.width, img.height, tolerance);
+  }
 });
 
 document.querySelector('#tolerance_adjust').addEventListener('change', function(evt) {
@@ -79,23 +82,34 @@ document.querySelector('#tolerance_adjust').addEventListener('change', function(
   }
 });
 
-document.querySelector('#mode_toggle').addEventListener('click', function(evt) {
+document.querySelector('#filter').addEventListener('click', function(evt) {
   if(filter_mode) {
     init_image(src_pic_ctx, img);
     filter_mode = 0;
-    $('#mode_toggle').html('On');
+    $('#filter').html('On');
   }
   else {
     threshold(tolerance);
     filter_mode = 1;
-    $('#mode_toggle').html('Off');
+    $('#filter').html('Off');
+  }
+});
+
+document.querySelector('#flood_fill').addEventListener('click', function(evt) {
+  if(flood_mode) {
+    flood_mode = 0;
+    $('#flood_fill').html('On');
+  }
+  else {
+    flood_mode = 1;
+    $('#flood_fill').html('Off');
   }
 });
 
 document.querySelector('#reset').addEventListener('click', function(evt) {
   init_image(src_pic_ctx, img);
   filter_mode = 0;
-  $('#mode_toggle').html('On');
+  $('#filter').html('On');
 });
 
 function init_image(context, img_src) {
