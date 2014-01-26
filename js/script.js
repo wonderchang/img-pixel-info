@@ -5,7 +5,7 @@ $('#info').css('width', window.innerWidth * 0.25 + 'px');
 $('#info').css('height', window.innerHeight * 0.95 + 'px');
 
 //Data
-var save_color = { r: 255, g: 255, b: 255 };
+var save_color = { r: 255, g: 255, b: 255, a: 255 };
 var color_box_width = window.innerWidth * 0.25 - 6;
 var color_box_height = 32;
 var tolerance = 50;
@@ -27,7 +27,9 @@ document.getElementById('move_color').setAttribute('width', color_box_width);
 document.getElementById('move_color').setAttribute('height', color_box_height);
 
 //The source of picture
-img.src = './img/mouse.jpg';
+//img.src = './img/color_wheel_730.png';
+img.src = './img/girl.jpg';
+//img.src = './img/color_wheel_730.png';
 
 //Load the picture and convert to canvas
 img.onload = function() {
@@ -59,11 +61,13 @@ src_pic.addEventListener('click', function(evt) {
   save_color.r = pixel.r;
   save_color.g = pixel.g;
   save_color.b = pixel.b;
+  save_color.a = pixel.a;
   $('#click_rgb_color').html(pixel.r + ', ' + pixel.g + ', ' + pixel.b);
   $('#click_hex_color').html(color_code);
   click_color_ctx.fillStyle = color_code;
   click_color_ctx.fillRect(0, 0, color_box_width, color_box_height);
   calculate_distance(save_color, save_color);
+  floodfill(evt.offsetX, evt.offsetY, {r: 0, g: 0, b: 0, a: 255}, src_pic_ctx, img.width, img.height, tolerance);
 });
 
 document.querySelector('#tolerance_adjust').addEventListener('change', function(evt) {
