@@ -30,8 +30,8 @@ document.getElementById('tolerance_adjust').style.width = color_box_width + 'px'
 
 //The source of picture
 //img.src = './img/color_wheel_730.png';
-//img.src = './img/girl.jpg';
-img.src = './img/mouse.jpg';
+img.src = './img/girl.jpg';
+//img.src = './img/mouse.jpg';
 
 //Load the picture and convert to canvas
 img.onload = function() {
